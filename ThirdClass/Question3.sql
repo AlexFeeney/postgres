@@ -1,21 +1,46 @@
---normalise data and create owner and pet table so data is in 2nf 	
+CREATE TABLE animals_all (
+  id SERIAL PRIMARY KEY,
+  animal_species VARCHAR(30) NOT NULL,
+  owner_name VARCHAR(30) NOT NULL
+);
 
---owner table creation
-create table owners (
-	owner_id int primary key, 
-	owner_name varchar(100) not null
-)
+INSERT INTO animals_all (animal_species, owner_name)
+VALUES
+  ('Dog', 'Bob'),
+  ('Fish', 'Bob'),
+  ('Cat', 'Kelly'),
+  ('Dolphin', 'Aquaman');
 
+SELECT * FROM animals_all;
 
+CREATE TABLE animals_location (
+  id SERIAL PRIMARY KEY,
+  location VARCHAR(30) NOT NULL,
+  animal_id INTEGER NOT NULL,
+  FOREIGN KEY (animal_id) REFERENCES animals_all(id)
+);
 
---create pet table
-create table pets(
-	pet_id int primary key, 
-	pet_name varchar(255) not null, 
-	pet_tye varchar(255) not null, 
-	owner_id int not null
-)
+-- Insert data
+INSERT INTO animals_location (location, animal_id)
+VALUES
+  ('Dog House', 1),
+  ('Fish Tank', 2),
+  ('Bed', 3),
+  ('Ocean', 4);
 
---imported csv's , checking data imports
-select * from pets
-select * from owners
+SELECT * FROM animals_location;
+
+-- Insert error
+INSERT INTO animals_location (location, animal_id)
+VALUES ('River', 5);
+
+-- Correct insert
+INSERT INTO animals_all (animal_species, owner_name)
+VALUES
+  ('Fish', 'Dave');
+
+INSERT INTO animals_location (location, animal_id)
+VALUES
+  ('River', 5);
+
+SELECT * FROM animals_location;
