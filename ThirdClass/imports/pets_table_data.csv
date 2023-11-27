@@ -1,0 +1,9 @@
+﻿pet_id,pet_name,pet_type,owner_id
+1,Bao,Dog,1
+2,Lian,Dog,1
+3,Nini,Dog,2
+4,Bastet,Cat,3
+5,Nala,Cat,4
+6,Thumper,Rabbit,5
+7,Cooper,Dog,6
+8,Cooper,Dog,6

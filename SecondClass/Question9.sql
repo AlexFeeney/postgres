@@ -13,7 +13,7 @@ create view title_count as
 	select f.title, 
 	(select count(i.film_id) from inventory i where f.film_id = i.film_id) 
 	as numCopies
-	FROM film f
+	FROM film f56
 	
 	
 --testing view by selecting records
